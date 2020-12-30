@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название товара</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td>
+                <a th:href="@{/product/{id}(id = ${product.getId()})}" th:text="${product.id}"/>
+            </td>
+            <td th:text="${product.title}"/>
+            <td th:text="${product.cost}"/>
+        </tr>
+        </tbody>
+    </table>
+    <span th:text="${'Всего товаров ' + products.size()}"/>
+    <br>
+    <a href="/product/new">Create new person</a>
+
+</div>
+
+<hr/>
+
+<a href="/product/filter">Filter</a>
+<!--<form th:method="POST" th:action="@{/product/filter}" th:object="${filter}">-->
+<!--    <label for="name">Enter filter: </label>-->
+<!--    <input type="text" th:field="*{strfilter}" id="name"/>-->
+<!--    <input type="submit" value="Filter"/>-->
+<!--</form>-->
+</body>
+</html>
