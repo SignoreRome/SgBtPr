@@ -37,7 +37,15 @@
 
 <hr/>
 
-<a href="/product/filter">Filter</a>
+<form th:method="get" th:action="@{/product}" class="form-horizontal">
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input th:value="${filter}" name="filter" placeholder="filter" class="form-control"/>
+    </div>
+    <div style="margin-bottom: 25px" class="input-group">
+        <button type="submit" class="btn btn-primary">Фильтр</button>
+    </div>
+</form>
 <!--<form th:method="POST" th:action="@{/product/filter}" th:object="${filter}">-->
 <!--    <label for="name">Enter filter: </label>-->
 <!--    <input type="text" th:field="*{strfilter}" id="name"/>-->

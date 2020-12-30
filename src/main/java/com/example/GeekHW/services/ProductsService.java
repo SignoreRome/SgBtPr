@@ -39,6 +39,8 @@ public class ProductsService {
     }
 
     public List<ProductEntity> filterProductStr(String filter){
+        if (filter == null)
+            return productRepository.getProducts();
         return productRepository.findSubstr(filter);
     }
 }
